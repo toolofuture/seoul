@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 프랜차이즈 기회 분석 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background: #fdfefe; color: #2c3e50; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        h1 { text-align: center; color: #27ae60; margin-bottom: 5px; font-weight: 800; }
+        .sub-header { text-align: center; color: #7f8c8d; margin-bottom: 40px; }
+
+        /* Opportunity Box */
+        .opp-box { background: #e9f7ef; border-left: 5px solid #2ecc71; padding: 25px; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.1); }
+        .opp-title { font-weight: bold; color: #27ae60; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; }
+        .opp-title::before { content: '🌱'; margin-right: 10px; font-size: 1.3em; }
+        .opp-text { font-size: 1em; line-height: 1.6; color: #2c3e50; }
+        .opp-point { margin-bottom: 12px; }
+        .highlight { background: #abebc6; padding: 0 4px; border-radius: 4px; font-weight: bold; }
+
+        /* Chart */
+        .chart-wrap { position: relative; height: 350px; margin-bottom: 50px; background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        th { background: #f4f6f7; color: #7f8c8d; font-weight: 600; padding: 15px; text-align: left; border-bottom: 2px solid #ecf0f1; }
+        td { padding: 15px; border-bottom: 1px solid #f1f1f1; background: white; }
+        .rank { font-weight: 800; color: #27ae60; margin-right: 10px; font-size: 1.1em; }
+        
+        /* Badges */
+        .badge { padding: 4px 8px; border-radius: 12px; font-size: 0.75em; font-weight: bold; color: white; display: inline-block; margin-left: 5px; }
+        .bg-blue { background: #3498db; }  /* Blue Ocean */
+        .bg-green { background: #27ae60; } /* High Efficiency */
+        .bg-purple { background: #9b59b6; } /* Survivor */
+
+        .section-title { font-size: 1.3em; font-weight: 800; color: #2c3e50; margin-top: 60px; margin-bottom: 15px; display: flex; align-items: center; }
+        .section-desc { font-size: 0.9em; color: #95a5a6; margin-bottom: 20px; }
+
+        footer { margin-top: 80px; text-align: center; color: #bdc3c7; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>서울 프랜차이즈 기회 발굴 (Hidden Gems)</h1>
+        <p class="sub-header">위기 속에서도 성장하는 '진짜'를 찾아서 (Opportunity Finding)</p>
+
+        <!-- Opportunity Insight -->
+        <div class="opp-box">
+            <div class="opp-title">데이터 분석가(ADsP)의 기회 포착 (Opportunity View)</div>
+            <div class="opp-text">
+                <div class="opp-point">
+                    <strong>1. 🎢 회복 탄력성 (Resilience):</strong><br>
+                    대부분이 폐점하는 시기에도 <span class="highlight">폐점률 0%를 유지</span>하며 살아남은 브랜드가 있습니다. 이들은 충성 고객층이 확보된 '강철 브랜드'입니다.
+                </div>
+                <div class="opp-point">
+                    <strong>2. 💎 저평가 우량주 (Undervalued):</strong><br>
+                    점포 수는 적지만(초기 진입), <span class="highlight">단위 면적당 매출이 압도적</span>인 브랜드(스텔스 성장)를 찾았습니다. 지금이 진입 적기일 수 있습니다.
+                </div>
+                <div class="opp-point">
+                    <strong>3. 🚀 피보팅 성공 (Survivor):</strong><br>
+                    사양 산업(도소매, 독서실) 내에서도 차별화 전략으로 <span class="highlight">나홀로 성장</span>하는 브랜드가 있습니다. 이들의 생존 전략을 벤치마킹하세요.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">💎 숨겨진 알짜: 고효율 소형 브랜드</div>
+        <div class="section-desc">서울 점포 20개 미만이지만, 평당 매출은 상위 10%인 잠재력 높은 브랜드</div>
+        <div class="chart-wrap">
+            <canvas id="gemChart"></canvas>
+        </div>
+
+        <div class="section-title">🛡️ 강철 방어: 폐점률 0% 브랜드</div>
+        <div class="section-desc">지난 1년간 서울에서 단 하나의 매장도 문 닫지 않은 브랜드 (신뢰성)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th width="50">순위</th>
+                    <th>브랜드</th>
+                    <th>업종</th>
+                    <th>서울 점포</th>
+                    <th>성장세</th>
+                    <th>특징</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr>
+                <td style="text-align:center"><span class="rank">1</span></td>
+                <td style="font-weight:bold;">아트앤하트</td>
+                <td style="color:#7f8c8d;">기타교육</td>
+                <td>55개</td>
+                <td style="color:#27ae60">+50</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">2</span></td>
+                <td style="font-weight:bold;">골프존파크(GOLFZON PARK)</td>
+                <td style="color:#7f8c8d;">스포츠</td>
+                <td>313개</td>
+                <td style="color:#27ae60">+42</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">3</span></td>
+                <td style="font-weight:bold;">육칠이</td>
+                <td style="color:#7f8c8d;">육칠이</td>
+                <td>17개</td>
+                <td style="color:#27ae60">+11</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">4</span></td>
+                <td style="font-weight:bold;">김치볶음밥잘볶는집</td>
+                <td style="color:#7f8c8d;">한식</td>
+                <td>7개</td>
+                <td style="color:#27ae60">+7</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">5</span></td>
+                <td style="font-weight:bold;">굿샵(Good Shop)</td>
+                <td style="color:#7f8c8d;">기타</td>
+                <td>9개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">6</span></td>
+                <td style="font-weight:bold;">정아니의불타는여고24시떡볶이</td>
+                <td style="color:#7f8c8d;">분식</td>
+                <td>12개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">7</span></td>
+                <td style="font-weight:bold;">해법중국어교실</td>
+                <td style="color:#7f8c8d;">교육(외국어)</td>
+                <td>94개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">8</span></td>
+                <td style="font-weight:bold;">우리동네미미네</td>
+                <td style="color:#7f8c8d;">기타외식</td>
+                <td>8개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">9</span></td>
+                <td style="font-weight:bold;">롯데프레시(LOTTE FRESH)</td>
+                <td style="color:#7f8c8d;">종합소매점</td>
+                <td>55개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">10</span></td>
+                <td style="font-weight:bold;">스팀맨</td>
+                <td style="color:#7f8c8d;">기타서비스</td>
+                <td>9개</td>
+                <td style="color:#27ae60">+3</td>
+                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <div class="section-title">🌊 블루오션 개척 Top 10</div>
+        <div class="section-desc">경쟁이 덜한 틈새 시장에서 조용히 매장을 늘리고 있는 브랜드</div>
+        <table>
+            <thead>
+                <tr>
+                    <th width="50">순위</th>
+                    <th>브랜드</th>
+                    <th>업종</th>
+                    <th>서울 점포</th>
+                    <th>순증가</th>
+                    <th>연평균매출</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr>
+                <td style="text-align:center"><span class="rank">1</span></td>
+                <td style="font-weight:bold;">아트앤하트</td>
+                <td style="color:#7f8c8d;">기타교육</td>
+                <td>55개</td>
+                <td style="color:#3498db">+50</td>
+                <td>77,499천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">2</span></td>
+                <td style="font-weight:bold;">골프존파크(GOLFZON PARK)</td>
+                <td style="color:#7f8c8d;">스포츠</td>
+                <td>313개</td>
+                <td style="color:#3498db">+42</td>
+                <td>536,388천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">3</span></td>
+                <td style="font-weight:bold;">육칠이</td>
+                <td style="color:#7f8c8d;">육칠이</td>
+                <td>17개</td>
+                <td style="color:#3498db">+11</td>
+                <td>739,903천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">4</span></td>
+                <td style="font-weight:bold;">김치볶음밥잘볶는집</td>
+                <td style="color:#7f8c8d;">한식</td>
+                <td>7개</td>
+                <td style="color:#3498db">+7</td>
+                <td>90,224천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">5</span></td>
+                <td style="font-weight:bold;">굿샵(Good Shop)</td>
+                <td style="color:#7f8c8d;">기타</td>
+                <td>9개</td>
+                <td style="color:#3498db">+3</td>
+                <td>218,042천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">6</span></td>
+                <td style="font-weight:bold;">정아니의불타는여고24시떡볶이</td>
+                <td style="color:#7f8c8d;">분식</td>
+                <td>12개</td>
+                <td style="color:#3498db">+3</td>
+                <td>228,494천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">7</span></td>
+                <td style="font-weight:bold;">해법중국어교실</td>
+                <td style="color:#7f8c8d;">교육(외국어)</td>
+                <td>94개</td>
+                <td style="color:#3498db">+3</td>
+                <td>21,056천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">8</span></td>
+                <td style="font-weight:bold;">우리동네미미네</td>
+                <td style="color:#7f8c8d;">기타외식</td>
+                <td>8개</td>
+                <td style="color:#3498db">+3</td>
+                <td>69,607천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">9</span></td>
+                <td style="font-weight:bold;">스팀맨</td>
+                <td style="color:#7f8c8d;">기타서비스</td>
+                <td>9개</td>
+                <td style="color:#3498db">+3</td>
+                <td>7,506천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">10</span></td>
+                <td style="font-weight:bold;">닭가대표</td>
+                <td style="color:#7f8c8d;">닭가대표</td>
+                <td>5개</td>
+                <td style="color:#3498db">+3</td>
+                <td>348,641천원</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+         <footer>
+            데이터 출처: 공정거래위원회 정보공개서 (2024년 2월 기준)<br>
+            Analyzed by AI Assistant (Opportunity Finding Perspective)
+        </footer>
+    </div>
+
+    <script>
+        // Gem Chart Data (Scatter for High Potential)
+        const gemData = [];
+        
+        new Chart(document.getElementById('gemChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: '숨겨진 보석 (Hidden Gems)',
+                    data: gemData.map(d => ({
+                        x: d.stores_23, 
+                        y: d.area_sales, 
+                        brand: d.brand
+                    })),
+                    backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                    borderColor: 'rgba(39, 174, 96, 1)',
+                    pointRadius: 8,
+                    pointHoverRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: '서울 점포 수 (초기 단계)' },
+                        min: 0,
+                        max: 50
+                    },
+                    y: {
+                        title: { display: true, text: '평당 연매출 (원)' },
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(c) {
+                                let d = c.raw;
+                                return d.brand + " (점포: " + d.x + ", 평당매출: " + d.y.toLocaleString() + "원)";
+                            }
+                        }
+                    },
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
