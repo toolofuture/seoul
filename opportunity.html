@@ -38,6 +38,10 @@
 
         .section-title { font-size: 1.3em; font-weight: 800; color: #2c3e50; margin-top: 60px; margin-bottom: 15px; display: flex; align-items: center; }
         .section-desc { font-size: 0.9em; color: #95a5a6; margin-bottom: 20px; }
+        
+        /* Analyst Note */
+        .analyst-note { margin-top: 60px; padding: 20px; background: #f8f9fa; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
+        .analyst-note strong { color: #333; }
 
         footer { margin-top: 80px; text-align: center; color: #bdc3c7; font-size: 0.8em; }
     </style>
@@ -53,7 +57,7 @@
             <div class="opp-text">
                 <div class="opp-point">
                     <strong>1. 🎢 회복 탄력성 (Resilience):</strong><br>
-                    대부분이 폐점하는 시기에도 <span class="highlight">폐점률 0%를 유지</span>하며 살아남은 브랜드가 있습니다. 이들은 충성 고객층이 확보된 '강철 브랜드'입니다.
+                    대부분이 폐점하는 시기에도 <span class="highlight">순증가세</span>를 유지하며 살아남은 브랜드가 있습니다. 이들은 충성 고객층이 확보된 '강철 브랜드'일 가능성이 높습니다.
                 </div>
                 <div class="opp-point">
                     <strong>2. 💎 저평가 우량주 (Undervalued):</strong><br>
@@ -72,8 +76,8 @@
             <canvas id="gemChart"></canvas>
         </div>
 
-        <div class="section-title">🛡️ 강철 방어: 폐점률 0% 브랜드</div>
-        <div class="section-desc">지난 1년간 서울에서 단 하나의 매장도 문 닫지 않은 브랜드 (신뢰성)</div>
+        <div class="section-title">🛡️ 강철 방어: 성장 지속 브랜드</div>
+        <div class="section-desc">지난 1년간 서울에서 꾸준히 매장을 늘리며(순증가) 내실을 다진 브랜드</div>
         <table>
             <thead>
                 <tr>
@@ -93,7 +97,7 @@
                 <td style="color:#7f8c8d;">기타교육</td>
                 <td>55개</td>
                 <td style="color:#27ae60">+50</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -102,7 +106,7 @@
                 <td style="color:#7f8c8d;">스포츠</td>
                 <td>313개</td>
                 <td style="color:#27ae60">+42</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -111,7 +115,7 @@
                 <td style="color:#7f8c8d;">육칠이</td>
                 <td>17개</td>
                 <td style="color:#27ae60">+11</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -120,7 +124,7 @@
                 <td style="color:#7f8c8d;">한식</td>
                 <td>7개</td>
                 <td style="color:#27ae60">+7</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -129,7 +133,7 @@
                 <td style="color:#7f8c8d;">기타</td>
                 <td>9개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -138,7 +142,7 @@
                 <td style="color:#7f8c8d;">분식</td>
                 <td>12개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -147,7 +151,7 @@
                 <td style="color:#7f8c8d;">교육(외국어)</td>
                 <td>94개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -156,7 +160,7 @@
                 <td style="color:#7f8c8d;">기타외식</td>
                 <td>8개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -165,7 +169,7 @@
                 <td style="color:#7f8c8d;">종합소매점</td>
                 <td>55개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             <tr>
@@ -174,7 +178,7 @@
                 <td style="color:#7f8c8d;">기타서비스</td>
                 <td>9개</td>
                 <td style="color:#27ae60">+3</td>
-                <td><span class="badge bg-purple">🛡️ 생존왕</span></td>
+                <td><span class="badge bg-purple">🛡️ 성장지속</span></td>
             </tr>
             
             </tbody>
@@ -206,15 +210,6 @@
             
             <tr>
                 <td style="text-align:center"><span class="rank">2</span></td>
-                <td style="font-weight:bold;">골프존파크(GOLFZON PARK)</td>
-                <td style="color:#7f8c8d;">스포츠</td>
-                <td>313개</td>
-                <td style="color:#3498db">+42</td>
-                <td>536,388천원</td>
-            </tr>
-            
-            <tr>
-                <td style="text-align:center"><span class="rank">3</span></td>
                 <td style="font-weight:bold;">육칠이</td>
                 <td style="color:#7f8c8d;">육칠이</td>
                 <td>17개</td>
@@ -223,7 +218,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">4</span></td>
+                <td style="text-align:center"><span class="rank">3</span></td>
                 <td style="font-weight:bold;">김치볶음밥잘볶는집</td>
                 <td style="color:#7f8c8d;">한식</td>
                 <td>7개</td>
@@ -232,7 +227,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">5</span></td>
+                <td style="text-align:center"><span class="rank">4</span></td>
                 <td style="font-weight:bold;">굿샵(Good Shop)</td>
                 <td style="color:#7f8c8d;">기타</td>
                 <td>9개</td>
@@ -241,7 +236,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">6</span></td>
+                <td style="text-align:center"><span class="rank">5</span></td>
                 <td style="font-weight:bold;">정아니의불타는여고24시떡볶이</td>
                 <td style="color:#7f8c8d;">분식</td>
                 <td>12개</td>
@@ -250,7 +245,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">7</span></td>
+                <td style="text-align:center"><span class="rank">6</span></td>
                 <td style="font-weight:bold;">해법중국어교실</td>
                 <td style="color:#7f8c8d;">교육(외국어)</td>
                 <td>94개</td>
@@ -259,7 +254,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">8</span></td>
+                <td style="text-align:center"><span class="rank">7</span></td>
                 <td style="font-weight:bold;">우리동네미미네</td>
                 <td style="color:#7f8c8d;">기타외식</td>
                 <td>8개</td>
@@ -268,7 +263,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">9</span></td>
+                <td style="text-align:center"><span class="rank">8</span></td>
                 <td style="font-weight:bold;">스팀맨</td>
                 <td style="color:#7f8c8d;">기타서비스</td>
                 <td>9개</td>
@@ -277,7 +272,7 @@
             </tr>
             
             <tr>
-                <td style="text-align:center"><span class="rank">10</span></td>
+                <td style="text-align:center"><span class="rank">9</span></td>
                 <td style="font-weight:bold;">닭가대표</td>
                 <td style="color:#7f8c8d;">닭가대표</td>
                 <td>5개</td>
@@ -287,6 +282,16 @@
             
             </tbody>
         </table>
+        
+        <div class="analyst-note">
+            <h3>📝 Analyst Note: 데이터의 한계와 주의점 (Critical Review)</h3>
+            <p>본 리포트는 공정거래위원회 정보공개서(2024.02) 데이터를 기반으로 작성되었으나, 다음과 같은 <strong>구조적 한계</strong>를 내포하고 있습니다:</p>
+            <ul>
+                <li><strong>'생존율'의 착시:</strong> 최근 1~2년 내 생긴 신규 브랜드는 아직 폐점 사이클이 도래하지 않아 '폐점률 0%'로 보일 수 있습니다. 이는 '강인함'이 아닌 '유아기적 특성'일 수 있습니다.</li>
+                <li><strong>매출 데이터의 투명성:</strong> 공개된 매출액에는 배달 플랫폼 수수료, 인건비 등 <strong>영업비용(Operating Cost)</strong>이 빠져 있어 실제 순수익과는 괴리가 클 수 있습니다.</li>
+                <li><strong>산업 구조의 영향:</strong> 학원/교습소의 순증가는 학령인구 감소 추세와 상충됩니다. 이는 '1인 운영 소규모 창업' 증가에 따른 현상일 수 있으므로 신중한 접근이 필요합니다.</li>
+            </ul>
+        </div>
 
          <footer>
             데이터 출처: 공정거래위원회 정보공개서 (2024년 2월 기준)<br>
