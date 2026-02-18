@@ -1,573 +1,455 @@
+
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울 소상공인 프랜차이즈 분석 리포트 (2024)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background: #f4f6f8;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
+        body { font-family: 'Pretendard', sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        
+        h1 { text-align: center; color: #1a1a1a; margin-bottom: 5px; font-weight: 800; }
+        .sub-header { text-align: center; color: #666; font-size: 0.95em; margin-bottom: 40px; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
+        /* Insight Box */
+        .insight-box { background: #e8f4f8; border-left: 5px solid #3498db; padding: 20px; margin-bottom: 40px; border-radius: 4px; }
+        .insight-title { font-weight: bold; color: #2980b9; margin-bottom: 10px; font-size: 1.1em; display: flex; align-items: center; }
+        .insight-title::before { content: '🧐'; margin-right: 8px; font-size: 1.2em; }
+        .insight-text { font-size: 0.95em; line-height: 1.6; color: #444; }
+        .insight-point { margin-bottom: 8px; }
+        
+        /* Badges */
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; margin-left: 5px; }
+        .badge-hot { background: #ffeceb; color: #e74c3c; border: 1px solid #ffdcdc; }
+        .badge-rich { background: #e8f8f5; color: #27ae60; border: 1px solid #d4efdf; }
+        .badge-warn { background: #fff8e1; color: #f39c12; border: 1px solid #fae5d3; }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 5px;
-            color: #2c3e50;
-        }
+        /* KPI Cards */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
+        .card { background: white; border: 1px solid #eee; padding: 25px 20px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .card h3 { margin: 0 0 10px 0; font-size: 0.9em; color: #888; font-weight: 500; }
+        .card .val { font-size: 2em; font-weight: 800; color: #2c3e50; }
+        .card .unit { font-size: 0.5em; color: #999; font-weight: normal; }
 
-        .sub-header {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-        }
+        /* Section */
+        .section-header { margin-top: 60px; margin-bottom: 20px; display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
+        .section-title { font-size: 1.4em; font-weight: 800; color: #2c3e50; }
+        .section-desc { font-size: 0.9em; color: #7f8c8d; }
 
-        /* Analysis Box Style */
-        .analysis-box {
-            background: #f8f9fa;
-            border-left: 5px solid #3498db;
-            padding: 20px;
-            margin-bottom: 40px;
-            border-radius: 0 8px 8px 0;
-        }
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #f9fafb; color: #666; font-weight: 600; padding: 15px 10px; text-align: left; font-size: 0.9em; }
+        td { padding: 15px 10px; border-bottom: 1px solid #f1f1f1; font-size: 0.95em; }
+        .rank { font-weight: 800; color: #ccc; margin-right: 10px; font-style: italic; }
+        .tr-hover:hover { background-color: #fafbfc; }
+        .up { color: #e74c3c; font-weight: bold; }
+        .down { color: #3498db; font-weight: bold; }
 
-        .analysis-title {
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .analysis-title::before {
-            content: '💡';
-            margin-right: 8px;
-        }
-
-        .analysis-content {
-            font-size: 0.95em;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .analysis-point {
-            margin-bottom: 10px;
-        }
-
-        .analysis-point strong {
-            color: #e74c3c;
-        }
-
-        .alert {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #eee;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-        }
-
-        .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1em;
-            color: #95a5a6;
-        }
-
-        .card .val {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #2980b9;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.9em;
-        }
-
-        th {
-            background: #f8f9fa;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            color: #555;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .rank {
-            background: #34495e;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8em;
-        }
-
-        .up {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        .down {
-            color: #3498db;
-            font-weight: bold;
-        }
-
-        .section-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-top: 50px;
-            border-left: 5px solid #3498db;
-            padding-left: 10px;
-        }
-
-        .section-desc {
-            font-size: 0.9em;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #aaa;
-            font-size: 0.8em;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
+        footer { margin-top: 80px; text-align: center; color: #aaa; font-size: 0.8em; line-height: 1.6; }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h1>서울 프랜차이즈 시장 분석 리포트 2024</h1>
+        <h1>서울 프랜차이즈 시장 분석 2024</h1>
         <p class="sub-header">공정거래위원회 데이터(2024.02) 기반 서울 지역 심층 분석</p>
 
-        <!-- Critical Analysis Section -->
-        <div class="analysis-box">
-            <div class="analysis-title">데이터 분석가(ADsP)의 비판적 해석 (Critical Analysis)</div>
-            <div class="analysis-content">
-                <div class="analysis-point">
-                    <strong>1. '순증가 1위'의 착시와 진입 장벽:</strong><br>
-                    외식업 1위인 <strong>골프존파크(+42개)</strong>는 소자본 창업이 아닌 고비용 장치 산업입니다. 이는 '대중적 유망함'이 아닌 '자본의 쏠림' 현상으로 해석해야
-                    하며, 진입 장벽이 매우 높습니다.
+        <!-- Expert Insight -->
+        <div class="insight-box">
+            <div class="insight-title">데이터 분석가(ADsP)의 비판적 해석 (Critical View)</div>
+            <div class="insight-text">
+                <div class="insight-point">
+                    <strong>1. '순증가 1위'의 착시와 진입장벽:</strong><br>
+                    외식업 1위 <strong>골프존파크</strong>는 창업비용이 매우 높은 '장치 산업'입니다. 이는 대중적 유망함이라기보다 '자본의 쏠림' 현상입니다.
                 </div>
-                <div class="analysis-point">
-                    <strong>2. 교육 서비스업의 노동 집약성:</strong><br>
-                    <strong>아트앤하트(+50), 셀파수학교실(+17)</strong> 등의 성장은 낮은 진입 장벽에 기인합니다. 매출액 미공개/저매출은 1인 원장 중심의 노동 집약적 구조를
-                    시사하므로, 무리한 확장보다는 '운영 효율화'가 핵심입니다.
+                <div class="insight-point">
+                    <strong>2. 교육 서비스의 노동 집약성:</strong><br>
+                    <strong>아트앤하트, 셀파수학교실</strong> 등의 폭발적 성장은 낮은 진입장벽 때문입니다. 하지만 매출액 미공개/저매출은 '1인 운영의 한계'를 보여주므로 <strong>운영 효율화</strong>가 필수입니다.
                 </div>
-                <div class="analysis-point">
-                    <strong>3. 감소세 브랜드와 산업 변화:</strong><br>
-                    <strong>토즈(-23%), 팔공티(-46%)</strong> 등의 감소는 개별 브랜드의 실패를 넘어, 스터디카페 무인화/저가 커피 시장 포화 등 <strong>산업 구조의
-                        변화(Digital Shift)</strong>를 반영합니다. 단순 홍보보다는 '업종 전환(Pivot)' 관점의 접근이 필요합니다.
+                <div class="insight-point">
+                    <strong>3. 감소세 브랜드의 시사점:</strong><br>
+                    <strong>토즈, 팔공티</strong> 등의 감소는 '디지털 전환'과 '저가 시장 포화'라는 산업 구조 변화를 반영합니다. 단순 홍보보다는 사업 모델의 <strong>피보팅(Pivoting)</strong>이 필요합니다.
                 </div>
             </div>
-        </div>
-
-        <div class="alert">
-            <strong>⚠️ 데이터 기준 안내:</strong><br>
-            본 리포트는 2024년 2월 기준 정보공개서를 바탕으로 <strong>2022년 말 ~ 2023년 말</strong>의 변화를 분석했습니다.<br>
-            매출액 '0'은 정보 미공개 또는 표본 부족을 의미하므로 해석에 주의가 필요합니다.
         </div>
 
         <div class="grid">
             <div class="card">
-                <h3>분석 대상 브랜드</h3>
-                <div class="val">115개</div>
+                <h3>분석 브랜드 수</h3>
+                <div class="val">115<span class="unit">개</span></div>
             </div>
             <div class="card">
                 <h3>평균 3.3㎡당 매출</h3>
-                <div class="val">34.4만원</div>
+                <div class="val">34.4<span class="unit">만원</span></div>
             </div>
             <div class="card">
-                <h3>서울 점포 순증 1위</h3>
-                <div class="val">골프존파크</div>
+                <h3>최고 성장 업종</h3>
+                <div class="val">운송</div>
             </div>
         </div>
 
-        <div class="section-title">🔥 외식업 성장 Top 10 (서울)</div>
-        <p class="section-desc">서울 지역 내 점포 순증가(New - Close) 기준 상위 브랜드</p>
+        <div class="section-header">
+            <div class="section-title">🔥 외식업 성장 Top 10</div>
+            <div class="section-desc">서울 내 순증가(New-Close) 기준</div>
+        </div>
         <table>
             <thead>
                 <tr>
-                    <th>순위</th>
+                    <th width="50">순위</th>
                     <th>브랜드</th>
                     <th>업종</th>
-                    <th>서울 점포(23)</th>
+                    <th>서울 점포</th>
                     <th>순증가</th>
-                    <th>평균매출(천원)</th>
+                    <th>비고</th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td><span class="rank">1</span></td>
-                    <td style="font-weight:bold">골프존파크(GOLFZON PARK)</td>
-                    <td>스포츠</td>
-                    <td>313</td>
-                    <td class="up">+42</td>
-                    <td>536,388</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">2</span></td>
-                    <td style="font-weight:bold">홀리카홀리카</td>
-                    <td>주요상품</td>
-                    <td>17</td>
-                    <td class="up">+14</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">3</span></td>
-                    <td style="font-weight:bold">원셰프의 행복식탁</td>
-                    <td>(</td>
-                    <td>12</td>
-                    <td class="up">+12</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">4</span></td>
-                    <td style="font-weight:bold">육칠이</td>
-                    <td>육칠이</td>
-                    <td>17</td>
-                    <td class="up">+11</td>
-                    <td>739,903</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">5</span></td>
-                    <td style="font-weight:bold">김치볶음밥잘볶는집</td>
-                    <td>한식</td>
-                    <td>7</td>
-                    <td class="up">+7</td>
-                    <td>90,224</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">6</span></td>
-                    <td style="font-weight:bold">우리동네미미문방구</td>
-                    <td>우리동네미미문방구</td>
-                    <td>5</td>
-                    <td class="up">+5</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">7</span></td>
-                    <td style="font-weight:bold">The 대단한커피</td>
-                    <td>커피</td>
-                    <td>5</td>
-                    <td class="up">+5</td>
-                    <td>49,797</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">8</span></td>
-                    <td style="font-weight:bold">좋은습관 PT STUDIO</td>
-                    <td>스포츠</td>
-                    <td>7</td>
-                    <td class="up">+4</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">9</span></td>
-                    <td style="font-weight:bold">굿샵(Good Shop)</td>
-                    <td>기타</td>
-                    <td>9</td>
-                    <td class="up">+3</td>
-                    <td>218,042</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">10</span></td>
-                    <td style="font-weight:bold">정아니의불타는여고24시떡볶이</td>
-                    <td>분식</td>
-                    <td>12</td>
-                    <td class="up">+3</td>
-                    <td>228,494</td>
-                </tr>
-
+                
+            <tr class="tr-hover">
+                <td><span class="rank">1</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">골프존파크(GOLFZON PARK)</td>
+                <td style="color:#777;">스포츠</td>
+                <td>313</td>
+                <td class="up">+42</td>
+                <td><span class="badge badge-hot">🔥 Hot</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">2</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">원셰프의 행복식탁</td>
+                <td style="color:#777;">(</td>
+                <td>12</td>
+                <td class="up">+12</td>
+                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">3</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">육칠이</td>
+                <td style="color:#777;">육칠이</td>
+                <td>17</td>
+                <td class="up">+11</td>
+                <td><span class="badge badge-hot">🔥 Hot</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">4</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">김치볶음밥잘볶는집</td>
+                <td style="color:#777;">한식</td>
+                <td>7</td>
+                <td class="up">+7</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">5</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">우리동네미미문방구</td>
+                <td style="color:#777;">우리동네미미문방구</td>
+                <td>5</td>
+                <td class="up">+5</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">6</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">The 대단한커피</td>
+                <td style="color:#777;">커피</td>
+                <td>5</td>
+                <td class="up">+5</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">7</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">좋은습관 PT STUDIO</td>
+                <td style="color:#777;">스포츠</td>
+                <td>7</td>
+                <td class="up">+4</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">8</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">굿샵(Good Shop)</td>
+                <td style="color:#777;">기타</td>
+                <td>9</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">9</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">우리동네미미네</td>
+                <td style="color:#777;">기타외식</td>
+                <td>8</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">10</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">롯데프레시(LOTTE FRESH)</td>
+                <td style="color:#777;">종합소매점</td>
+                <td>55</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
             </tbody>
         </table>
 
-        <div class="section-title">📚 서비스/도소매 성장 Top 10 (서울)</div>
-        <p class="section-desc">교육, 서비스, 도소매 등 비외식 분야 성장 브랜드</p>
+        <div class="section-header">
+            <div class="section-title">📚 서비스/리테일 성장 Top 10</div>
+            <div class="section-desc">학원, 편의점, 운동 등 비외식 분야</div>
+        </div>
         <table>
             <thead>
                 <tr>
-                    <th>순위</th>
+                    <th width="50">순위</th>
                     <th>브랜드</th>
                     <th>업종</th>
-                    <th>서울 점포(23)</th>
+                    <th>서울 점포</th>
                     <th>순증가</th>
-                    <th>평균매출(천원)</th>
+                    <th>비고</th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td><span class="rank">1</span></td>
-                    <td style="font-weight:bold">아트앤하트</td>
-                    <td>기타교육</td>
-                    <td>55</td>
-                    <td class="up">+50</td>
-                    <td>77,499</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">2</span></td>
-                    <td style="font-weight:bold">셀파수학교실</td>
-                    <td>교육(교과)</td>
-                    <td>365</td>
-                    <td class="up">+17</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">3</span></td>
-                    <td style="font-weight:bold">해법중국어교실</td>
-                    <td>교육(외국어)</td>
-                    <td>94</td>
-                    <td class="up">+3</td>
-                    <td>21,056</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">4</span></td>
-                    <td style="font-weight:bold">스팀맨</td>
-                    <td>기타서비스</td>
-                    <td>9</td>
-                    <td class="up">+3</td>
-                    <td>7,506</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">5</span></td>
-                    <td style="font-weight:bold">조이매스</td>
-                    <td>교육(교과)</td>
-                    <td>16</td>
-                    <td class="up">+2</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">6</span></td>
-                    <td style="font-weight:bold">이마트에브리데이</td>
-                    <td>편의점</td>
-                    <td>64</td>
-                    <td class="up">+2</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">7</span></td>
-                    <td style="font-weight:bold">어드벤처피아노</td>
-                    <td>기타서비스</td>
-                    <td>22</td>
-                    <td class="down">0</td>
-                    <td>83,849</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">8</span></td>
-                    <td style="font-weight:bold">집중소</td>
-                    <td>기타서비스</td>
-                    <td>8</td>
-                    <td class="down">0</td>
-                    <td>112,249</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">9</span></td>
-                    <td style="font-weight:bold">패럴랙스학원</td>
-                    <td>교육(외국어)</td>
-                    <td>18</td>
-                    <td class="down">0</td>
-                    <td>0</td>
-                </tr>
-
-                <tr>
-                    <td><span class="rank">10</span></td>
-                    <td style="font-weight:bold">고수의 운전면허</td>
-                    <td>서비스</td>
-                    <td>35</td>
-                    <td class="down">0</td>
-                    <td>0</td>
-                </tr>
-
+                
+            <tr class="tr-hover">
+                <td><span class="rank">1</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">아트앤하트</td>
+                <td style="color:#777;">기타교육</td>
+                <td>55</td>
+                <td class="up">+50</td>
+                <td><span class="badge badge-hot">🔥 Hot</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">2</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">셀파수학교실</td>
+                <td style="color:#777;">교육(교과)</td>
+                <td>365</td>
+                <td class="up">+17</td>
+                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">3</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">홀리카홀리카</td>
+                <td style="color:#777;">화장품(도소매)</td>
+                <td>17</td>
+                <td class="up">+14</td>
+                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">4</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">정아니의불타는여고24시떡볶이</td>
+                <td style="color:#777;">분식</td>
+                <td>12</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">5</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">해법중국어교실</td>
+                <td style="color:#777;">교육(외국어)</td>
+                <td>94</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">6</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">스팀맨</td>
+                <td style="color:#777;">기타서비스</td>
+                <td>9</td>
+                <td class="up">+3</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">7</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">조이매스</td>
+                <td style="color:#777;">교육(교과)</td>
+                <td>16</td>
+                <td class="up">+2</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">8</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">이마트에브리데이</td>
+                <td style="color:#777;">편의점</td>
+                <td>64</td>
+                <td class="up">+2</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">9</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">어드벤처피아노</td>
+                <td style="color:#777;">기타서비스</td>
+                <td>22</td>
+                <td class="">0</td>
+                <td></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">10</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">집중소</td>
+                <td style="color:#777;">기타서비스</td>
+                <td>8</td>
+                <td class="">0</td>
+                <td></td>
+            </tr>
+            
             </tbody>
         </table>
 
-        <div class="section-title">💎 면적당 고효율 브랜드 (데이터 주의)</div>
-        <p class="section-desc">단위 면적(3.3㎡)당 연간 매출액 상위 (매출액 0 미기재 제외)</p>
-        <div style="height: 300px;">
+        <div class="section-header">
+            <div class="section-title">💎 알짜 효율성 브랜드 (면적당 매출)</div>
+            <div class="section-desc">3.3㎡(1평)당 연매출 상위 (데이터 미기재 제외)</div>
+        </div>
+        <div style="height: 300px; margin-top: 20px;">
             <canvas id="effChart"></canvas>
         </div>
 
-        <div class="section-title">📉 감소세 주의 브랜드</div>
-        <p class="section-desc">서울 내 폐점 및 계약 종료가 신규 개점보다 많은 브랜드</p>
+        <div class="section-header">
+            <div class="section-title">📉 감소세 주의 브랜드</div>
+            <div class="section-desc">폐점률 상위 및 점포 수 감소</div>
+        </div>
         <table>
             <thead>
                 <tr>
                     <th>브랜드</th>
                     <th>업종</th>
-                    <th>서울 점포(23)</th>
-                    <th>감소량</th>
+                    <th>서울 점포</th>
+                    <th>감소</th>
                     <th>감소율</th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr>
-                    <td style="font-weight:bold">글라스스토리</td>
-                    <td>(</td>
-                    <td>10</td>
-                    <td class="down">-46</td>
-                    <td>-82.1%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">팔공티</td>
-                    <td>음료</td>
-                    <td>24</td>
-                    <td class="down">-21</td>
-                    <td>-46.7%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">모닝글로리</td>
-                    <td>기타도소매</td>
-                    <td>73</td>
-                    <td class="down">-10</td>
-                    <td>-12.0%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">청해찜탕</td>
-                    <td>한식</td>
-                    <td>6</td>
-                    <td class="down">-5</td>
-                    <td>-45.5%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">롯데슈퍼</td>
-                    <td>종합소매점</td>
-                    <td>92</td>
-                    <td class="down">-5</td>
-                    <td>-5.2%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">홍대개미</td>
-                    <td>기타외식</td>
-                    <td>12</td>
-                    <td class="down">-4</td>
-                    <td>-25.0%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">김봉남포장마차</td>
-                    <td>주점</td>
-                    <td>7</td>
-                    <td class="down">-4</td>
-                    <td>-36.4%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">갓츠킹</td>
-                    <td>(</td>
-                    <td>5</td>
-                    <td class="down">-4</td>
-                    <td>-44.4%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">토즈(TOZ)</td>
-                    <td>기타서비스</td>
-                    <td>13</td>
-                    <td class="down">-4</td>
-                    <td>-23.5%</td>
-                </tr>
-
-                <tr>
-                    <td style="font-weight:bold">도쿄빙수</td>
-                    <td>아이스크림/빙수</td>
-                    <td>6</td>
-                    <td class="down">-3</td>
-                    <td>-33.3%</td>
-                </tr>
-
+                
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">글라스스토리</td>
+                <td style="color:#777;">(</td>
+                <td>10</td>
+                <td class="down">-46</td>
+                <td>-82.1%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">팔공티</td>
+                <td style="color:#777;">음료</td>
+                <td>24</td>
+                <td class="down">-21</td>
+                <td>-46.7%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">모닝글로리</td>
+                <td style="color:#777;">기타도소매</td>
+                <td>73</td>
+                <td class="down">-10</td>
+                <td>-12.0%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">청해찜탕</td>
+                <td style="color:#777;">한식</td>
+                <td>6</td>
+                <td class="down">-5</td>
+                <td>-45.5%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">롯데슈퍼</td>
+                <td style="color:#777;">종합소매점</td>
+                <td>92</td>
+                <td class="down">-5</td>
+                <td>-5.2%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">홍대개미</td>
+                <td style="color:#777;">기타외식</td>
+                <td>12</td>
+                <td class="down">-4</td>
+                <td>-25.0%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">김봉남포장마차</td>
+                <td style="color:#777;">주점</td>
+                <td>7</td>
+                <td class="down">-4</td>
+                <td>-36.4%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">갓츠킹</td>
+                <td style="color:#777;">(</td>
+                <td>5</td>
+                <td class="down">-4</td>
+                <td>-44.4%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">토즈(TOZ)</td>
+                <td style="color:#777;">기타서비스</td>
+                <td>13</td>
+                <td class="down">-4</td>
+                <td>-23.5%</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td style="font-weight:bold;">도쿄빙수</td>
+                <td style="color:#777;">아이스크림/빙수</td>
+                <td>6</td>
+                <td class="down">-3</td>
+                <td>-33.3%</td>
+            </tr>
+            
             </tbody>
         </table>
 
         <footer>
-            <p>Data Source: 공정거래위원회 가맹사업거래 정보공개서 (2024)</p>
-            <p>본 리포트는 공공데이터를 기반으로 생성되었으며, 투자 권유가 아닙니다.</p>
+            데이터 출처: 공정거래위원회 정보공개서 (2024년 2월 기준)<br>
+            *매출액 '0' 표기는 가맹본부 정보 미공개 또는 표본 부족인 경우입니다.<br>
+            본 리포트는 참고용이며, 투자 권유 목적으로 작성되지 않았습니다.
         </footer>
     </div>
 
     <script>
-        const effData = [{ "brand": "더샘(the SAEM)", "category": "화장품", "stores_22": 30, "stores_23": 29, "diff": -1, "avg_sales": 1074063, "area_sales": 87191, "total_invest": "80000", "type": "food" }, { "brand": "육칠이", "category": "육칠이", "stores_22": 6, "stores_23": 17, "diff": 11, "avg_sales": 739903, "area_sales": 57288, "total_invest": "13200", "type": "food" }, { "brand": "팔공냉면", "category": "한식", "stores_22": 10, "stores_23": 12, "diff": 2, "avg_sales": 447000, "area_sales": 54633, "total_invest": "2200000", "type": "food" }, { "brand": "앤티앤스", "category": "(", "stores_22": 50, "stores_23": 49, "diff": -1, "avg_sales": 372301, "area_sales": 46690, "total_invest": "0", "type": "food" }, { "brand": "닭가대표", "category": "닭가대표", "stores_22": 2, "stores_23": 5, "diff": 3, "avg_sales": 348641, "area_sales": 43144, "total_invest": "16500", "type": "food" }, { "brand": "롯데프레시(LOTTE FRESH)", "category": "종합소매점", "stores_22": 52, "stores_23": 55, "diff": 3, "avg_sales": 1737959, "area_sales": 33662, "total_invest": "0", "type": "food" }, { "brand": "민영활어공장", "category": "기준은", "stores_22": 6, "stores_23": 6, "diff": 0, "avg_sales": 648818, "area_sales": 32662, "total_invest": "24200000", "type": "food" }, { "brand": "윤이불닭발", "category": "기타외식", "stores_22": 21, "stores_23": 21, "diff": 0, "avg_sales": 363916, "area_sales": 29358, "total_invest": "0", "type": "food" }, { "brand": "요거트월드", "category": "기타외식", "stores_22": 14, "stores_23": 13, "diff": -1, "avg_sales": 335281, "area_sales": 28148, "total_invest": "21120", "type": "food" }, { "brand": "마케집", "category": "일식", "stores_22": 12, "stores_23": 14, "diff": 2, "avg_sales": 730948, "area_sales": 23277, "total_invest": "75000", "type": "food" }];
+        const effData = [{"brand": "박승철헤어스투디오", "category": "기준은", "stores_22": 71, "stores_23": 69, "diff": -2, "avg_sales": 547422047, "area_sales": 11945256, "total_invest": "110000000", "type": "food"}, {"brand": "박공헤어", "category": "기준은", "stores_22": 10, "stores_23": 10, "diff": 0, "avg_sales": 283847934, "area_sales": 11426075, "total_invest": "66000000", "type": "food"}, {"brand": "더샘(the SAEM)", "category": "화장품(도소매)", "stores_22": 30, "stores_23": 29, "diff": -1, "avg_sales": 1074063, "area_sales": 87191, "total_invest": "80000", "type": "service"}, {"brand": "육칠이", "category": "육칠이", "stores_22": 6, "stores_23": 17, "diff": 11, "avg_sales": 739903, "area_sales": 57288, "total_invest": "13200", "type": "food"}, {"brand": "팔공냉면", "category": "한식", "stores_22": 10, "stores_23": 12, "diff": 2, "avg_sales": 447000, "area_sales": 54633, "total_invest": "2200000", "type": "food"}, {"brand": "앤티앤스", "category": "(", "stores_22": 50, "stores_23": 49, "diff": -1, "avg_sales": 372301, "area_sales": 46690, "total_invest": "0", "type": "food"}, {"brand": "닭가대표", "category": "닭가대표", "stores_22": 2, "stores_23": 5, "diff": 3, "avg_sales": 348641, "area_sales": 43144, "total_invest": "16500", "type": "food"}, {"brand": "롯데프레시(LOTTE FRESH)", "category": "종합소매점", "stores_22": 52, "stores_23": 55, "diff": 3, "avg_sales": 1737959, "area_sales": 33662, "total_invest": "0", "type": "food"}, {"brand": "민영활어공장", "category": "기준은", "stores_22": 6, "stores_23": 6, "diff": 0, "avg_sales": 648818, "area_sales": 32662, "total_invest": "24200000", "type": "food"}, {"brand": "윤이불닭발", "category": "기타외식", "stores_22": 21, "stores_23": 21, "diff": 0, "avg_sales": 363916, "area_sales": 29358, "total_invest": "0", "type": "food"}];
+        
         new Chart(document.getElementById('effChart'), {
             type: 'bar',
             data: {
                 labels: effData.map(d => d.brand),
                 datasets: [{
-                    label: '평당 연매출(천원)',
-                    data: effData.map(d => d.area_sales),
-                    backgroundColor: '#27ae60'
+                    label: '3.3㎡당 연매출(만원)',
+                    data: effData.map(d => Math.round(d.area_sales/10000)),
+                    backgroundColor: 'rgba(39, 174, 96, 0.8)',
+                    borderRadius: 4
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y'
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { display: false } }
+                }
             }
         });
     </script>
 </body>
-
 </html>
