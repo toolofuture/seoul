@@ -21,7 +21,7 @@
         .insight-point { margin-bottom: 8px; }
         
         /* Badges */
-        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; margin-left: 5px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; font-weight: bold; margin-left: 3px; }
         .badge-hot { background: #ffeceb; color: #e74c3c; border: 1px solid #ffdcdc; }
         .badge-rich { background: #e8f8f5; color: #27ae60; border: 1px solid #d4efdf; }
         .badge-warn { background: #fff8e1; color: #f39c12; border: 1px solid #fae5d3; }
@@ -46,6 +46,17 @@
         .tr-hover:hover { background-color: #fafbfc; }
         .up { color: #e74c3c; font-weight: bold; }
         .down { color: #3498db; font-weight: bold; }
+        .blur-zero { color: #ccc; font-style: italic; }
+
+        .investment-warning {
+            font-size: 0.85em;
+            color: #c0392b;
+            background: #fdedec;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
 
         footer { margin-top: 80px; text-align: center; color: #aaa; font-size: 0.8em; line-height: 1.6; }
     </style>
@@ -85,8 +96,13 @@
             </div>
             <div class="card">
                 <h3>최고 성장 업종</h3>
-                <div class="val">운송</div>
+                <div class="val">기타교육</div>
             </div>
+        </div>
+
+        <div class="investment-warning">
+            ⚠️ <strong>[경고]</strong> 누군가의 전 재산이 걸린 의사결정일 수 있습니다.<br>
+            매출액이 비공개('정보없음')된 브랜드는 <strong>실제 수익성을 반드시 본사 상담을 통해 검증</strong>해야 합니다.
         </div>
 
         <div class="section-header">
@@ -101,99 +117,99 @@
                     <th>업종</th>
                     <th>서울 점포</th>
                     <th>순증가</th>
-                    <th>비고</th>
+                    <th>연평균매출</th>
                 </tr>
             </thead>
             <tbody>
                 
             <tr class="tr-hover">
                 <td><span class="rank">1</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">골프존파크(GOLFZON PARK)</td>
-                <td style="color:#777;">스포츠</td>
-                <td>313</td>
-                <td class="up">+42</td>
-                <td><span class="badge badge-hot">🔥 Hot</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">원셰프의 행복식탁<span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">(</td>
+                <td>12</td>
+                <td class="up">+12</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">2</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">원셰프의 행복식탁</td>
-                <td style="color:#777;">(</td>
-                <td>12</td>
-                <td class="up">+12</td>
-                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">육칠이<span class="badge badge-hot">🔥 Hot</span></td>
+                <td style="color:#777;">육칠이</td>
+                <td>17</td>
+                <td class="up">+11</td>
+                <td>739,903천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">3</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">육칠이</td>
-                <td style="color:#777;">육칠이</td>
-                <td>17</td>
-                <td class="up">+11</td>
-                <td><span class="badge badge-hot">🔥 Hot</span></td>
-            </tr>
-            
-            <tr class="tr-hover">
-                <td><span class="rank">4</span></td>
                 <td style="font-weight:bold; font-size:1.05em;">김치볶음밥잘볶는집</td>
                 <td style="color:#777;">한식</td>
                 <td>7</td>
                 <td class="up">+7</td>
-                <td></td>
+                <td>90,224천원</td>
             </tr>
             
             <tr class="tr-hover">
-                <td><span class="rank">5</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">우리동네미미문방구</td>
-                <td style="color:#777;">우리동네미미문방구</td>
-                <td>5</td>
-                <td class="up">+5</td>
-                <td></td>
-            </tr>
-            
-            <tr class="tr-hover">
-                <td><span class="rank">6</span></td>
+                <td><span class="rank">4</span></td>
                 <td style="font-weight:bold; font-size:1.05em;">The 대단한커피</td>
                 <td style="color:#777;">커피</td>
                 <td>5</td>
                 <td class="up">+5</td>
-                <td></td>
+                <td>49,797천원</td>
             </tr>
             
             <tr class="tr-hover">
-                <td><span class="rank">7</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">좋은습관 PT STUDIO</td>
-                <td style="color:#777;">스포츠</td>
-                <td>7</td>
-                <td class="up">+4</td>
-                <td></td>
-            </tr>
-            
-            <tr class="tr-hover">
-                <td><span class="rank">8</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">굿샵(Good Shop)</td>
-                <td style="color:#777;">기타</td>
-                <td>9</td>
-                <td class="up">+3</td>
-                <td></td>
-            </tr>
-            
-            <tr class="tr-hover">
-                <td><span class="rank">9</span></td>
+                <td><span class="rank">5</span></td>
                 <td style="font-weight:bold; font-size:1.05em;">우리동네미미네</td>
                 <td style="color:#777;">기타외식</td>
                 <td>8</td>
                 <td class="up">+3</td>
-                <td></td>
+                <td>69,607천원</td>
             </tr>
             
             <tr class="tr-hover">
-                <td><span class="rank">10</span></td>
+                <td><span class="rank">6</span></td>
                 <td style="font-weight:bold; font-size:1.05em;">롯데프레시(LOTTE FRESH)</td>
                 <td style="color:#777;">종합소매점</td>
                 <td>55</td>
                 <td class="up">+3</td>
-                <td></td>
+                <td>1,737,959천원</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">7</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">배달짜글OH짜글<span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">한식</td>
+                <td>11</td>
+                <td class="up">+3</td>
+                <td><span class="blur-zero">정보없음</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">8</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">닭가대표</td>
+                <td style="color:#777;">닭가대표</td>
+                <td>5</td>
+                <td class="up">+3</td>
+                <td>348,641천원</td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">9</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">도레도레<span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">(</td>
+                <td>7</td>
+                <td class="up">+2</td>
+                <td><span class="blur-zero">정보없음</span></td>
+            </tr>
+            
+            <tr class="tr-hover">
+                <td><span class="rank">10</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">피아노리브레<span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">기타</td>
+                <td>7</td>
+                <td class="up">+2</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             </tbody>
@@ -211,99 +227,99 @@
                     <th>업종</th>
                     <th>서울 점포</th>
                     <th>순증가</th>
-                    <th>비고</th>
+                    <th>연평균매출</th>
                 </tr>
             </thead>
             <tbody>
                 
             <tr class="tr-hover">
                 <td><span class="rank">1</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">아트앤하트</td>
+                <td style="font-weight:bold; font-size:1.05em;">아트앤하트<span class="badge badge-hot">🔥 Hot</span></td>
                 <td style="color:#777;">기타교육</td>
                 <td>55</td>
                 <td class="up">+50</td>
-                <td><span class="badge badge-hot">🔥 Hot</span></td>
+                <td>77,499천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">2</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">셀파수학교실</td>
-                <td style="color:#777;">교육(교과)</td>
-                <td>365</td>
-                <td class="up">+17</td>
-                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">골프존파크(GOLFZON PARK)<span class="badge badge-hot">🔥 Hot</span></td>
+                <td style="color:#777;">스포츠</td>
+                <td>313</td>
+                <td class="up">+42</td>
+                <td>536,388천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">3</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">홀리카홀리카</td>
-                <td style="color:#777;">화장품(도소매)</td>
-                <td>17</td>
-                <td class="up">+14</td>
-                <td><span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 매출정보없음</span></td>
+                <td style="font-weight:bold; font-size:1.05em;">셀파수학교실<span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">교육(교과)</td>
+                <td>365</td>
+                <td class="up">+17</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">4</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">정아니의불타는여고24시떡볶이</td>
-                <td style="color:#777;">분식</td>
-                <td>12</td>
-                <td class="up">+3</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">홀리카홀리카<span class="badge badge-hot">🔥 Hot</span><span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">화장품(도소매)</td>
+                <td>17</td>
+                <td class="up">+14</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">5</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">해법중국어교실</td>
-                <td style="color:#777;">교육(외국어)</td>
-                <td>94</td>
-                <td class="up">+3</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">우리동네미미문방구<span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">문구(도소매)</td>
+                <td>5</td>
+                <td class="up">+5</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">6</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">스팀맨</td>
-                <td style="color:#777;">기타서비스</td>
-                <td>9</td>
-                <td class="up">+3</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">좋은습관 PT STUDIO<span class="badge badge-warn">⚠️ 정보없음</span></td>
+                <td style="color:#777;">스포츠</td>
+                <td>7</td>
+                <td class="up">+4</td>
+                <td><span class="blur-zero">정보없음</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">7</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">조이매스</td>
-                <td style="color:#777;">교육(교과)</td>
-                <td>16</td>
-                <td class="up">+2</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">굿샵(Good Shop)</td>
+                <td style="color:#777;">주류(도소매)</td>
+                <td>9</td>
+                <td class="up">+3</td>
+                <td>218,042천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">8</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">이마트에브리데이</td>
-                <td style="color:#777;">편의점</td>
-                <td>64</td>
-                <td class="up">+2</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">정아니의불타는여고24시떡볶이</td>
+                <td style="color:#777;">분식</td>
+                <td>12</td>
+                <td class="up">+3</td>
+                <td>228,494천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">9</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">어드벤처피아노</td>
-                <td style="color:#777;">기타서비스</td>
-                <td>22</td>
-                <td class="">0</td>
-                <td></td>
+                <td style="font-weight:bold; font-size:1.05em;">해법중국어교실</td>
+                <td style="color:#777;">교육(외국어)</td>
+                <td>94</td>
+                <td class="up">+3</td>
+                <td>21,056천원</td>
             </tr>
             
             <tr class="tr-hover">
                 <td><span class="rank">10</span></td>
-                <td style="font-weight:bold; font-size:1.05em;">집중소</td>
+                <td style="font-weight:bold; font-size:1.05em;">스팀맨</td>
                 <td style="color:#777;">기타서비스</td>
-                <td>8</td>
-                <td class="">0</td>
-                <td></td>
+                <td>9</td>
+                <td class="up">+3</td>
+                <td>7,506천원</td>
             </tr>
             
             </tbody>
