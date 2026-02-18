@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 프랜차이즈 성장 추세 분석 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background: #fdfefe; color: #2c3e50; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        h1 { text-align: center; color: #2980b9; margin-bottom: 5px; font-weight: 800; }
+        .sub-header { text-align: center; color: #7f8c8d; margin-bottom: 40px; }
+
+        /* Chart */
+        .chart-wrap { position: relative; height: 400px; margin-bottom: 50px; background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        th { background: #f4f6f7; color: #7f8c8d; font-weight: 600; padding: 15px; text-align: left; border-bottom: 2px solid #ecf0f1; }
+        td { padding: 15px; border-bottom: 1px solid #f1f1f1; background: white; }
+        .rank { font-weight: 800; color: #2980b9; margin-right: 10px; font-size: 1.1em; }
+        
+        .section-title { font-size: 1.3em; font-weight: 800; color: #2c3e50; margin-top: 40px; margin-bottom: 15px; display: flex; align-items: center; border-left: 5px solid #2980b9; padding-left: 15px; }
+        .section-desc { font-size: 0.9em; color: #95a5a6; margin-bottom: 20px; padding-left: 20px; }
+        
+        /* Analyst Note */
+        .analyst-note { margin-top: 60px; padding: 20px; background: #f8f9fa; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
+        
+        footer { margin-top: 80px; text-align: center; color: #bdc3c7; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>서울 프랜차이즈 성장 추세 (Growth Trend)</h1>
+        <p class="sub-header">2022-2023 서울 점포 수 변화 추이 (Line Chart Analysis)</p>
+
+        <div class="section-title">📈 Top 10 브랜드 성장 기울기</div>
+        <div class="section-desc">가파른 기울기는 '폭발적 성장'을, 완만한 기울기는 '안정적 확장'을 의미합니다.</div>
+        <div class="chart-wrap">
+            <canvas id="trendChart"></canvas>
+        </div>
+
+        <div class="section-title">📊 성장 상세 데이터 (Growth Detail)</div>
+        <div class="section-desc">순증가 규모와 평균 매출액을 통한 실적 검증</div>
+        <table>
+            <thead>
+                <tr>
+                    <th width="50">순위</th>
+                    <th>브랜드</th>
+                    <th>업종</th>
+                    <th>2022 점포</th>
+                    <th>2023 점포</th>
+                    <th>순증가</th>
+                    <th>연평균매출</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr>
+                <td style="text-align:center"><span class="rank">1</span></td>
+                <td style="font-weight:bold;">아트앤하트</td>
+                <td style="color:#7f8c8d;">기타교육</td>
+                <td>5</td>
+                <td>55</td>
+                <td style="color:#e74c3c; font-weight:bold;">+50</td>
+                <td>77,499천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">2</span></td>
+                <td style="font-weight:bold;">골프존파크(GOLFZON PARK)</td>
+                <td style="color:#7f8c8d;">스포츠</td>
+                <td>271</td>
+                <td>313</td>
+                <td style="color:#e74c3c; font-weight:bold;">+42</td>
+                <td>536,388천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">3</span></td>
+                <td style="font-weight:bold;">셀파수학교실</td>
+                <td style="color:#7f8c8d;">교육(교과)</td>
+                <td>348</td>
+                <td>365</td>
+                <td style="color:#e74c3c; font-weight:bold;">+17</td>
+                <td><span style="color:#ccc">정보없음</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">4</span></td>
+                <td style="font-weight:bold;">홀리카홀리카</td>
+                <td style="color:#7f8c8d;">주요상품</td>
+                <td>3</td>
+                <td>17</td>
+                <td style="color:#e74c3c; font-weight:bold;">+14</td>
+                <td><span style="color:#ccc">정보없음</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">5</span></td>
+                <td style="font-weight:bold;">원셰프의 행복식탁</td>
+                <td style="color:#7f8c8d;">(</td>
+                <td>0</td>
+                <td>12</td>
+                <td style="color:#e74c3c; font-weight:bold;">+12</td>
+                <td><span style="color:#ccc">정보없음</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">6</span></td>
+                <td style="font-weight:bold;">육칠이</td>
+                <td style="color:#7f8c8d;">육칠이</td>
+                <td>6</td>
+                <td>17</td>
+                <td style="color:#e74c3c; font-weight:bold;">+11</td>
+                <td>739,903천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">7</span></td>
+                <td style="font-weight:bold;">김치볶음밥잘볶는집</td>
+                <td style="color:#7f8c8d;">한식</td>
+                <td>0</td>
+                <td>7</td>
+                <td style="color:#e74c3c; font-weight:bold;">+7</td>
+                <td>90,224천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">8</span></td>
+                <td style="font-weight:bold;">우리동네미미문방구</td>
+                <td style="color:#7f8c8d;">우리동네미미문방구</td>
+                <td>0</td>
+                <td>5</td>
+                <td style="color:#e74c3c; font-weight:bold;">+5</td>
+                <td><span style="color:#ccc">정보없음</span></td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">9</span></td>
+                <td style="font-weight:bold;">The 대단한커피</td>
+                <td style="color:#7f8c8d;">커피</td>
+                <td>0</td>
+                <td>5</td>
+                <td style="color:#e74c3c; font-weight:bold;">+5</td>
+                <td>49,797천원</td>
+            </tr>
+            
+            <tr>
+                <td style="text-align:center"><span class="rank">10</span></td>
+                <td style="font-weight:bold;">민영활어공장</td>
+                <td style="color:#7f8c8d;">기준은</td>
+                <td>0</td>
+                <td>4</td>
+                <td style="color:#e74c3c; font-weight:bold;">+4</td>
+                <td><span style="color:#ccc">정보없음</span></td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <div class="analyst-note">
+            <h3>📝 Analyst Note: 데이터 해석의 주의점</h3>
+            <p>본 차트는 2022년과 2023년 말 기준의 <strong>단순 점포 수 비교(Net Change)</strong>입니다.</p>
+            <ul>
+                <li><strong>기울기의 의미:</strong> 급격한 우상향 기울기는 초기 브랜드의 공격적 확장을 의미할 수 있으나, 내실(매출/수익)이 동반되지 않은 성장은 리스크가 큽니다.</li>
+                <li><strong>폐점 데이터의 부재:</strong> 점포 수가 늘었다고 폐점이 0인 것은 아닙니다. (신규 100개 - 폐점 50개 = 순증 50개일 수 있음)</li>
+                <li><strong>투자 유의:</strong> 그래프의 방향성만 보지 말고, 반드시 공정위 가맹사업거래 사이트에서 <strong>'실제 폐점률'</strong>을 확인하시기 바랍니다.</li>
+            </ul>
+        </div>
+
+         <footer>
+            데이터 출처: 공정거래위원회 정보공개서 (2024년 2월 기준)<br>
+            Analyzed by AI Assistant (Trend Analysis View)
+        </footer>
+    </div>
+
+    <script>
+        const trendData = [{"brand": "아트앤하트", "stores_22": 5, "stores_23": 55}, {"brand": "골프존파크(GOLFZON PARK)", "stores_22": 271, "stores_23": 313}, {"brand": "셀파수학교실", "stores_22": 348, "stores_23": 365}, {"brand": "홀리카홀리카", "stores_22": 3, "stores_23": 17}, {"brand": "원셰프의 행복식탁", "stores_22": 0, "stores_23": 12}, {"brand": "육칠이", "stores_22": 6, "stores_23": 17}, {"brand": "김치볶음밥잘볶는집", "stores_22": 0, "stores_23": 7}, {"brand": "우리동네미미문방구", "stores_22": 0, "stores_23": 5}, {"brand": "The 대단한커피", "stores_22": 0, "stores_23": 5}, {"brand": "민영활어공장", "stores_22": 0, "stores_23": 4}];
+        
+        // Prepare datasets for Line Chart
+        const datasets = trendData.map((d, i) => ({
+            label: d.brand,
+            data: [d.stores_22, d.stores_23],
+            borderColor: `hsl(${i * 30}, 70%, 50%)`, // Different colors
+            backgroundColor: `hsl(${i * 30}, 70%, 50%)`,
+            borderWidth: 2,
+            tension: 0.1,
+            pointRadius: 5
+        }));
+
+        new Chart(document.getElementById('trendChart'), {
+            type: 'line',
+            data: {
+                labels: ['2022년', '2023년'], // X-axis
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(c) {
+                                return c.dataset.label + ": " + c.raw + "개";
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: '서울 점포 수' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
