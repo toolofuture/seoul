@@ -13,6 +13,9 @@
         h1 { text-align: center; color: #1a1a1a; margin-bottom: 5px; font-weight: 800; }
         .sub-header { text-align: center; color: #666; font-size: 0.95em; margin-bottom: 40px; }
 
+        /* Butterfly Chart Container */
+        .chart-container { position: relative; height: 350px; margin-bottom: 50px; }
+
         /* Insight Box */
         .insight-box { background: #e8f4f8; border-left: 5px solid #3498db; padding: 20px; margin-bottom: 40px; border-radius: 4px; }
         .insight-title { font-weight: bold; color: #2980b9; margin-bottom: 10px; font-size: 1.1em; display: flex; align-items: center; }
@@ -23,15 +26,11 @@
         /* Badges */
         .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; font-weight: bold; margin-left: 3px; }
         .badge-hot { background: #ffeceb; color: #e74c3c; border: 1px solid #ffdcdc; }
-        .badge-rich { background: #e8f8f5; color: #27ae60; border: 1px solid #d4efdf; }
         .badge-warn { background: #fff8e1; color: #f39c12; border: 1px solid #fae5d3; }
-
-        /* KPI Cards */
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
-        .card { background: white; border: 1px solid #eee; padding: 25px 20px; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
-        .card h3 { margin: 0 0 10px 0; font-size: 0.9em; color: #888; font-weight: 500; }
-        .card .val { font-size: 2em; font-weight: 800; color: #2c3e50; }
-        .card .unit { font-size: 0.5em; color: #999; font-weight: normal; }
+        .cause-tag { font-size: 0.8em; padding: 2px 6px; border-radius: 4px; margin-left: 5px; color: white; }
+        .cause-saturated { background: #e67e22; }
+        .cause-trend { background: #9b59b6; }
+        .cause-digital { background: #34495e; }
 
         /* Section */
         .section-header { margin-top: 60px; margin-bottom: 20px; display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
@@ -52,10 +51,12 @@
             font-size: 0.85em;
             color: #c0392b;
             background: #fdedec;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 40px;
             text-align: center;
+            border: 1px solid #fadbd8;
+            font-weight: bold;
         }
 
         footer { margin-top: 80px; text-align: center; color: #aaa; font-size: 0.8em; line-height: 1.6; }
@@ -71,38 +72,34 @@
             <div class="insight-title">데이터 분석가(ADsP)의 비판적 해석 (Critical View)</div>
             <div class="insight-text">
                 <div class="insight-point">
-                    <strong>1. '순증가 1위'의 착시와 진입장벽:</strong><br>
-                    외식업 1위 <strong>골프존파크</strong>는 창업비용이 매우 높은 '장치 산업'입니다. 이는 대중적 유망함이라기보다 '자본의 쏠림' 현상입니다.
+                    <strong>1. '순증가' 대신 '생존율'을 보라:</strong><br>
+                    개점 수만 보면 위험합니다. <strong>버터플라이 차트</strong>를 통해 신규 개점(Left)과 폐점(Right)을 동시에 확인하세요. 폐점이 많은 성장은 '전쟁터'입니다.
                 </div>
                 <div class="insight-point">
-                    <strong>2. 교육 서비스의 노동 집약성:</strong><br>
-                    <strong>아트앤하트, 셀파수학교실</strong> 등의 폭발적 성장은 낮은 진입장벽 때문입니다. 하지만 매출액 미공개/저매출은 '1인 운영의 한계'를 보여주므로 <strong>운영 효율화</strong>가 필수입니다.
+                    <strong>2. 매출 정보 부재(Hidden Risk):</strong><br>
+                    매출액 데이터가 투명하지 않은 브랜드는 차트에서 <strong>흐릿하게(Blur)</strong> 처리하여 리스크를 시각화했습니다.
                 </div>
                 <div class="insight-point">
-                    <strong>3. 감소세 브랜드의 시사점:</strong><br>
-                    <strong>토즈, 팔공티</strong> 등의 감소는 '디지털 전환'과 '저가 시장 포화'라는 산업 구조 변화를 반영합니다. 단순 홍보보다는 사업 모델의 <strong>피보팅(Pivoting)</strong>이 필요합니다.
+                    <strong>3. 감소세 브랜드의 원인:</strong><br>
+                    단순 실패가 아닙니다. <strong>[시장포화], [트렌드변화], [디지털전환]</strong> 태그를 통해 산업의 구조적 하락 원인을 파악하세요.
                 </div>
             </div>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>분석 브랜드 수</h3>
-                <div class="val">115<span class="unit">개</span></div>
-            </div>
-            <div class="card">
-                <h3>평균 3.3㎡당 매출</h3>
-                <div class="val">34.4<span class="unit">만원</span></div>
-            </div>
-            <div class="card">
-                <h3>최고 성장 업종</h3>
-                <div class="val">기타교육</div>
-            </div>
+        <div class="section-header">
+            <div class="section-title">🦋 신규 개점 vs 폐점 (생존율 분석)</div>
+            <div class="section-desc">많이 생긴 만큼 많이 사라지는 '전쟁터'를 식별하세요.</div>
+        </div>
+        <div class="chart-container">
+            <canvas id="butterflyChart"></canvas>
         </div>
 
-        <div class="investment-warning">
-            ⚠️ <strong>[경고]</strong> 누군가의 전 재산이 걸린 의사결정일 수 있습니다.<br>
-            매출액이 비공개('정보없음')된 브랜드는 <strong>실제 수익성을 반드시 본사 상담을 통해 검증</strong>해야 합니다.
+        <div class="section-header">
+            <div class="section-title">📊 면적당 매출 vs 매장 수 (산점도)</div>
+            <div class="section-desc">X축: 매장 수(규모) / Y축: 면적당 매출(효율) <br>*우상단일수록 '규모와 효율'을 모두 잡은 브랜드입니다.</div>
+        </div>
+        <div class="chart-container">
+            <canvas id="scatterChart"></canvas>
         </div>
 
         <div class="section-header">
@@ -326,25 +323,17 @@
         </table>
 
         <div class="section-header">
-            <div class="section-title">💎 알짜 효율성 브랜드 (면적당 매출)</div>
-            <div class="section-desc">3.3㎡(1평)당 연매출 상위 (데이터 미기재 제외)</div>
-        </div>
-        <div style="height: 300px; margin-top: 20px;">
-            <canvas id="effChart"></canvas>
-        </div>
-
-        <div class="section-header">
-            <div class="section-title">📉 감소세 주의 브랜드</div>
-            <div class="section-desc">폐점률 상위 및 점포 수 감소</div>
+            <div class="section-title">📉 감소세 주의 브랜드 (원인 분석)</div>
+            <div class="section-desc">단순 수치 감소를 넘어, 구조적 원인을 파악하세요.</div>
         </div>
         <table>
             <thead>
                 <tr>
                     <th>브랜드</th>
                     <th>업종</th>
-                    <th>서울 점포</th>
                     <th>감소</th>
                     <th>감소율</th>
+                    <th>추정 원인</th>
                 </tr>
             </thead>
             <tbody>
@@ -352,117 +341,189 @@
             <tr class="tr-hover">
                 <td style="font-weight:bold;">글라스스토리</td>
                 <td style="color:#777;">(</td>
-                <td>10</td>
                 <td class="down">-46</td>
                 <td>-82.1%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">팔공티</td>
                 <td style="color:#777;">음료</td>
-                <td>24</td>
                 <td class="down">-21</td>
                 <td>-46.7%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">모닝글로리</td>
                 <td style="color:#777;">기타도소매</td>
-                <td>73</td>
                 <td class="down">-10</td>
                 <td>-12.0%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">청해찜탕</td>
                 <td style="color:#777;">한식</td>
-                <td>6</td>
                 <td class="down">-5</td>
                 <td>-45.5%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">롯데슈퍼</td>
                 <td style="color:#777;">종합소매점</td>
-                <td>92</td>
                 <td class="down">-5</td>
                 <td>-5.2%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">홍대개미</td>
                 <td style="color:#777;">기타외식</td>
-                <td>12</td>
                 <td class="down">-4</td>
                 <td>-25.0%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">김봉남포장마차</td>
                 <td style="color:#777;">주점</td>
-                <td>7</td>
                 <td class="down">-4</td>
                 <td>-36.4%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">갓츠킹</td>
                 <td style="color:#777;">(</td>
-                <td>5</td>
                 <td class="down">-4</td>
                 <td>-44.4%</td>
+                <td><span class="cause-tag cause-trend">경쟁심화</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">토즈(TOZ)</td>
                 <td style="color:#777;">기타서비스</td>
-                <td>13</td>
                 <td class="down">-4</td>
                 <td>-23.5%</td>
+                <td><span class="cause-tag cause-digital">대체재(스터디카페)</span></td>
             </tr>
             
             <tr class="tr-hover">
                 <td style="font-weight:bold;">도쿄빙수</td>
                 <td style="color:#777;">아이스크림/빙수</td>
-                <td>6</td>
                 <td class="down">-3</td>
                 <td>-33.3%</td>
+                <td><span class="cause-tag cause-trend">트렌드변화</span></td>
             </tr>
             
             </tbody>
         </table>
 
+        <div class="investment-warning">
+            ⚠️ <strong>[경고]</strong> 누군가의 <strong>전 재산</strong>이 걸린 의사결정일 수 있습니다.<br>
+            데이터가 '정보없음'인 브랜드는 반드시 본사 상담 및 가맹점 현장 방문을 통해 실제 수익성을 검증하십시오.<br>
+            이 리포트는 방향성을 제시할 뿐, 투자의 성공을 보장하지 않습니다.
+        </div>
+
+
         <footer>
             데이터 출처: 공정거래위원회 정보공개서 (2024년 2월 기준)<br>
-            *매출액 '0' 표기는 가맹본부 정보 미공개 또는 표본 부족인 경우입니다.<br>
-            본 리포트는 참고용이며, 투자 권유 목적으로 작성되지 않았습니다.
+            Analyzed by AI Assistant (ADsP Perspective)
         </footer>
     </div>
 
     <script>
-        const effData = [{"brand": "박승철헤어스투디오", "category": "기준은", "stores_22": 71, "stores_23": 69, "diff": -2, "avg_sales": 547422047, "area_sales": 11945256, "total_invest": "110000000", "type": "food"}, {"brand": "박공헤어", "category": "기준은", "stores_22": 10, "stores_23": 10, "diff": 0, "avg_sales": 283847934, "area_sales": 11426075, "total_invest": "66000000", "type": "food"}, {"brand": "더샘(the SAEM)", "category": "화장품(도소매)", "stores_22": 30, "stores_23": 29, "diff": -1, "avg_sales": 1074063, "area_sales": 87191, "total_invest": "80000", "type": "service"}, {"brand": "육칠이", "category": "육칠이", "stores_22": 6, "stores_23": 17, "diff": 11, "avg_sales": 739903, "area_sales": 57288, "total_invest": "13200", "type": "food"}, {"brand": "팔공냉면", "category": "한식", "stores_22": 10, "stores_23": 12, "diff": 2, "avg_sales": 447000, "area_sales": 54633, "total_invest": "2200000", "type": "food"}, {"brand": "앤티앤스", "category": "(", "stores_22": 50, "stores_23": 49, "diff": -1, "avg_sales": 372301, "area_sales": 46690, "total_invest": "0", "type": "food"}, {"brand": "닭가대표", "category": "닭가대표", "stores_22": 2, "stores_23": 5, "diff": 3, "avg_sales": 348641, "area_sales": 43144, "total_invest": "16500", "type": "food"}, {"brand": "롯데프레시(LOTTE FRESH)", "category": "종합소매점", "stores_22": 52, "stores_23": 55, "diff": 3, "avg_sales": 1737959, "area_sales": 33662, "total_invest": "0", "type": "food"}, {"brand": "민영활어공장", "category": "기준은", "stores_22": 6, "stores_23": 6, "diff": 0, "avg_sales": 648818, "area_sales": 32662, "total_invest": "24200000", "type": "food"}, {"brand": "윤이불닭발", "category": "기타외식", "stores_22": 21, "stores_23": 21, "diff": 0, "avg_sales": 363916, "area_sales": 29358, "total_invest": "0", "type": "food"}];
+        // Butterfly Chart Data
+        const butterflyData = [{"brand": "원셰프의 행복식탁", "category": "(", "stores_22": 0, "stores_23": 12, "diff": 12, "avg_sales": 0, "area_sales": 0, "total_invest": "0", "new_open": 12, "close": 0, "type": "food"}, {"brand": "육칠이", "category": "육칠이", "stores_22": 6, "stores_23": 17, "diff": 11, "avg_sales": 739903, "area_sales": 57288, "total_invest": "13200", "new_open": 11, "close": 0, "type": "food"}, {"brand": "김치볶음밥잘볶는집", "category": "한식", "stores_22": 0, "stores_23": 7, "diff": 7, "avg_sales": 90224, "area_sales": 9204, "total_invest": "58300", "new_open": 7, "close": 0, "type": "food"}, {"brand": "The 대단한커피", "category": "커피", "stores_22": 0, "stores_23": 5, "diff": 5, "avg_sales": 49797, "area_sales": 3891, "total_invest": "17000", "new_open": 5, "close": 0, "type": "food"}, {"brand": "우리동네미미네", "category": "기타외식", "stores_22": 5, "stores_23": 8, "diff": 3, "avg_sales": 69607, "area_sales": 5682, "total_invest": "27000", "new_open": 3, "close": 0, "type": "food"}, {"brand": "글라스스토리", "category": "(", "stores_22": 56, "stores_23": 10, "diff": -46, "avg_sales": 180536, "area_sales": 10706, "total_invest": "0", "new_open": 0, "close": 46, "type": "food"}, {"brand": "팔공티", "category": "음료", "stores_22": 45, "stores_23": 24, "diff": -21, "avg_sales": 111201, "area_sales": 9092, "total_invest": "22000", "new_open": 0, "close": 21, "type": "food"}, {"brand": "모닝글로리", "category": "기타도소매", "stores_22": 83, "stores_23": 73, "diff": -10, "avg_sales": 278628, "area_sales": 7634, "total_invest": "18000", "new_open": 0, "close": 10, "type": "service"}, {"brand": "청해찜탕", "category": "한식", "stores_22": 11, "stores_23": 6, "diff": -5, "avg_sales": 165317, "area_sales": 11963, "total_invest": "16500", "new_open": 0, "close": 5, "type": "food"}, {"brand": "롯데슈퍼", "category": "종합소매점", "stores_22": 97, "stores_23": 92, "diff": -5, "avg_sales": 0, "area_sales": 0, "total_invest": "0", "new_open": 0, "close": 5, "type": "service"}];
         
-        new Chart(document.getElementById('effChart'), {
+        new Chart(document.getElementById('butterflyChart'), {
             type: 'bar',
             data: {
-                labels: effData.map(d => d.brand),
+                labels: butterflyData.map(d => d.brand),
+                datasets: [
+                    {
+                        label: '신규 개점 (유입)',
+                        data: butterflyData.map(d => d.new_open),
+                        backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                        barPercentage: 0.6
+                    },
+                    {
+                        label: '계약 종료/해지 (이탈)',
+                        data: butterflyData.map(d => -d.close), // Negative for butterfly effect
+                        backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                        barPercentage: 0.6
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: true, drawBorder: false },
+                        ticks: { callback: function(val) { return Math.abs(val); } } # Abs value
+                    },
+                    y: {
+                        grid: { display: false },
+                        stacked: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(c) {
+                                let val = c.raw;
+                                return c.dataset.label + ": " + Math.abs(val) + "개";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Scatter Chart Data
+        const scatterData = [{"brand": "Uber Taxi (우버택시)", "stores": 3772, "area_sales": 0}, {"brand": "셀파수학교실", "stores": 365, "area_sales": 0}, {"brand": "골프존파크(GOLFZON PARK)", "stores": 313, "area_sales": 3465}, {"brand": "옵티마", "stores": 235, "area_sales": 0}, {"brand": "투다리", "stores": 129, "area_sales": 17955}, {"brand": "해법중국어교실", "stores": 94, "area_sales": 1639}, {"brand": "롯데슈퍼", "stores": 92, "area_sales": 0}, {"brand": "모닝글로리", "stores": 73, "area_sales": 7634}, {"brand": "박승철헤어스투디오", "stores": 69, "area_sales": 11945256}, {"brand": "이마트에브리데이", "stores": 64, "area_sales": 0}, {"brand": "아트앤하트", "stores": 55, "area_sales": 6709}, {"brand": "롯데프레시(LOTTE FRESH)", "stores": 55, "area_sales": 33662}, {"brand": "앤티앤스", "stores": 49, "area_sales": 46690}, {"brand": "롯데마켓999(LOTTE market999)", "stores": 42, "area_sales": 0}, {"brand": "고수의 운전면허", "stores": 35, "area_sales": 0}, {"brand": "어라운드스터디카페(A.round study cafe)", "stores": 32, "area_sales": 2004}, {"brand": "더샘(the SAEM)", "stores": 29, "area_sales": 87191}, {"brand": "팔공티", "stores": 24, "area_sales": 9092}, {"brand": "어드벤처피아노", "stores": 22, "area_sales": 0}, {"brand": "바닷물만난콩이:두부야", "stores": 21, "area_sales": 16509}, {"brand": "윤이불닭발", "stores": 21, "area_sales": 29358}, {"brand": "바닷물만난콩이:두부야", "stores": 21, "area_sales": 16509}, {"brand": "노래하는크레용", "stores": 20, "area_sales": 0}, {"brand": "패럴랙스학원", "stores": 18, "area_sales": 0}, {"brand": "육칠이", "stores": 17, "area_sales": 57288}, {"brand": "홀리카홀리카", "stores": 17, "area_sales": 0}, {"brand": "조이매스", "stores": 16, "area_sales": 0}, {"brand": "터치카페", "stores": 15, "area_sales": 11741}, {"brand": "브리오슈도레(BRIOCHE DOREE)", "stores": 15, "area_sales": 0}, {"brand": "터치카페", "stores": 15, "area_sales": 11741}, {"brand": "올떡", "stores": 14, "area_sales": 10607}, {"brand": "크로플덕오리아가씨", "stores": 14, "area_sales": 17336}, {"brand": "전준수명품청기와감자탕", "stores": 14, "area_sales": 20807}, {"brand": "헬로우컷", "stores": 14, "area_sales": 0}, {"brand": "코리엔탈깻잎두마리치킨", "stores": 14, "area_sales": 18272}, {"brand": "마케집", "stores": 14, "area_sales": 23277}, {"brand": "요거트월드", "stores": 13, "area_sales": 28148}, {"brand": "순수치킨", "stores": 13, "area_sales": 15543}, {"brand": "토즈(TOZ)", "stores": 13, "area_sales": 2276}, {"brand": "명태어장", "stores": 13, "area_sales": 11227}, {"brand": "맥스피드PC", "stores": 13, "area_sales": 0}, {"brand": "정아니의불타는여고24시떡볶이", "stores": 12, "area_sales": 15444}, {"brand": "홍대개미", "stores": 12, "area_sales": 0}, {"brand": "팔공냉면", "stores": 12, "area_sales": 54633}, {"brand": "강순자옛맛김치찌개", "stores": 12, "area_sales": 21221}, {"brand": "아리아(ARIA)센터", "stores": 12, "area_sales": 3134}, {"brand": "원셰프의 행복식탁", "stores": 12, "area_sales": 0}, {"brand": "Ycap", "stores": 11, "area_sales": 0}, {"brand": "오니기리와이규동", "stores": 11, "area_sales": 18758}, {"brand": "프랭크서울", "stores": 11, "area_sales": 8452}];
+        
+        new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
+            data: {
                 datasets: [{
-                    label: '3.3㎡당 연매출(만원)',
-                    data: effData.map(d => Math.round(d.area_sales/10000)),
-                    backgroundColor: 'rgba(39, 174, 96, 0.8)',
-                    borderRadius: 4
+                    label: '브랜드 포지셔닝',
+                    data: scatterData.map(d => ({x: d.stores, y: d.area_sales, brand: d.brand})),
+                    backgroundColor: function(ctx) {
+                        const val = ctx.raw?.y || 0;
+                        return val === 0 ? 'rgba(189, 195, 199, 0.4)' : 'rgba(46, 204, 113, 0.6)'; // Grey for zero sales
+                    },
+                    pointRadius: 6,
+                    pointHoverRadius: 8
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y',
-                plugins: {
-                    legend: { display: false }
-                },
                 scales: {
-                    x: { grid: { display: false } },
-                    y: { grid: { display: false } }
+                    x: {
+                        type: 'logarithmic',
+                        title: { display: true, text: '서울 점포 수 (Log Scale)' },
+                        grid: { display: false }
+                    },
+                    y: {
+                        title: { display: true, text: '평당 연매출 (원)' },
+                        grid: { color: '#f0f0f0' }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(c) {
+                                let d = c.raw;
+                                return d.brand + " (점포: " + d.x + "개, 평당매출: " + d.y.toLocaleString() + "원)";
+                            }
+                        }
+                    }
                 }
             }
         });
